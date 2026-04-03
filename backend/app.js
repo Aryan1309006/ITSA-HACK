@@ -6,6 +6,10 @@ const cors = require("cors");
 const path = require("path");
 const port = process.env.PORT || 8000;
 
+
+const ExpressError = require("./utils/expressError");
+const wrapAsync = require("./utils/wrapAsync"); 
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const mongoose = require("mongoose");
