@@ -14,6 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const mongoose = require("mongoose");
 const DB_URL = process.env.ATLASDB_URL;
+const CLIENT_URL=process.env.CLIENT_URL;
 
 main()
   .then(() => {
@@ -28,7 +29,7 @@ async function main() {
 }
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: CLIENT_URL,
   credentials: true,
 }));
 app.use(express.json());
