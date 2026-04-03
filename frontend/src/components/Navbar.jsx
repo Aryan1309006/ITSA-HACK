@@ -4,6 +4,7 @@ import {
   faUser,
   faTrophy
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -18,10 +19,10 @@ export default function Navbar() {
 
         {/* Links */}
         <div className="hidden md:flex items-center gap-8 text-gray-300">
-          <a href="#" className="hover:text-cyan-400 transition">Home</a>
-          <a href="#" className="hover:text-cyan-400 transition">Simulations</a>
-          <a href="#" className="hover:text-cyan-400 transition">Leaderboard</a>
-          <a href="#" className="hover:text-cyan-400 transition">Learn</a>
+          <Link to="/" className="hover:text-cyan-400 transition">Home</Link>
+          <Link to="/simulation" className="hover:text-cyan-400 transition">Simulations</Link>
+          <Link to="/leaderboard" className="hover:text-cyan-400 transition">Leaderboard</Link>
+          <Link to="/learn" className="hover:text-cyan-400 transition">Learn</Link>
         </div>
 
         {/* Actions */}
@@ -30,11 +31,11 @@ export default function Navbar() {
             <FontAwesomeIcon icon={faTrophy} />
             <span className="hidden md:inline">Scores</span>
           </button>
-
+ <Link to="/auth">
           <button className="flex items-center gap-2 bg-cyan-500 text-black px-4 py-2 rounded-lg hover:bg-cyan-400 transition">
             <FontAwesomeIcon icon={faUser} />
-            Login
-          </button>
+           Log in
+          </button></Link>
         </div>
       </div>
     </nav>

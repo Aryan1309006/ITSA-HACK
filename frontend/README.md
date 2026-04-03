@@ -1,16 +1,31 @@
-# React + Vite
+# 🚀 ScamShield  
+ITSA Hackathon 2026 | Problem Statement FT4  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview  
+ScamShield is an interactive platform that simulates real-world scams (calls, SMS, emails) to help users learn how to detect and respond safely.
 
-Currently, two official plugins are available:
+## 🎯 Objective  
+Provide **experiential learning** through live scam simulations instead of passive awareness.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features (Initial)  
+- Scam scenario selection  
+- Basic simulation with user choices  
+- Fake call/SMS UI (in progress)  
+- Red flag detection (planned)  
+- Scoring system (planned)  
 
-## React Compiler
+## 🛠 Tech Stack  
+- React.js  
+- Node.js + Express  
+- MongoDB  
+- Tailwind CSS  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Status  
+⚠️ Project is in early development stage. Core simulation and UI are under progress.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ▶️ Setup  
+```bash
+git clone < https://github.com/Aryan1309006/ITSA-HACK.git >
+cd ITSA-HACK
+npm install
+npm start
