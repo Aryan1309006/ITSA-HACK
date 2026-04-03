@@ -158,7 +158,6 @@ function Auth() {
               <option value="">Select Role</option>
               <option value="user">User</option>
               <option value="admin">Admin</option>
-              <option value="station_owner">Station Owner</option>
             </select>
 
             {/* Button */}

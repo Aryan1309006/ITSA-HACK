@@ -1,7 +1,7 @@
 import Hero from '../components/Hero.jsx';
 import ScenarioCard from '../components/ScenarioCard.jsx';
 import { motion } from 'framer-motion';
-import { scenarios, filterPills } from '../data/mockData.js';
+import { scenarios, filterPills } from '../mockData.js';
 import { useState } from 'react';
 
 export default function Home() {
