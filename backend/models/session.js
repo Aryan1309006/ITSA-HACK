@@ -1,78 +1,34 @@
 const mongoose = require("mongoose");
 
-const choiceSchema = new mongoose.Schema({
-  text: {
-    type: String,
-    required: true,
-  },
-  nextNode: {
-    type: Number,
-    default: null,
-  },
-  points: {
-    type: Number,
-    default: 0,
-  },
-  safe: {
-    type: Boolean,
-    required: true,
-  },
+const choiceMadeSchema = new mongoose.Schema({
+  nodeId: { type: Number, required: true },
+  choiceText: { type: String, required: true },
+  safe: { type: Boolean, required: true },
+  points: { type: Number, default: 0 },
 });
 
-const nodeSchema = new mongoose.Schema({
-  id: {
-    type: Number,
-    required: true,
-  },
-  speaker: {
-    type: String,
-    enum: ["scammer", "system"],
-    default: "scammer",
-  },
-  dialogue: {
-    type: String,
-    required: true,
-  },
-  redFlags: {
-    type: [String],
-    default: [],
-  },
-  choices: [choiceSchema],
-});
-
-const scenarioSchema = new mongoose.Schema(
+const sessionSchema = new mongoose.Schema(
   {
-    title: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    category: {
-      type: String,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
-    type: {
-      type: String,
-      enum: ["call", "sms", "email"],
+    scenarioId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Scenario",
       required: true,
     },
-    difficulty: {
-      type: String,
-      enum: ["easy", "medium", "hard"],
-      required: true,
-    },
-    estimatedTime: {
-      type: String,
-      default: "5 mins",
-    },
-    playCount: {
-      type: Number,
-      default: 0,
-    },
-    nodes: [nodeSchema],
+    scenarioTitle: { type: String, required: true },
+    score: { type: Number, default: 0 },
+    redFlagsSpotted: { type: Number, default: 0 },
+    totalRedFlags: { type: Number, default: 0 },
+    choicesMade: [choiceMadeSchema],
+    vulnerabilityType: { type: String, default: "None" },
+    completedAt: { type: Date, default: Date.now },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-const Scenario = mongoose.model("Scenario", scenarioSchema);
-module.exports = Scenario;
+const Session = mongoose.model("Session", sessionSchema);
+module.exports = Session;

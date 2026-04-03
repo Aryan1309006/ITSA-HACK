@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Scenario = require("../models/Scenario");
+const Scenario = require("../models/scenario");
 const ExpressError = require("../utils/expressError");
 const wrapAsync = require("../utils/wrapAsync");
 const verifyToken = require("../middleware/authMiddleware");

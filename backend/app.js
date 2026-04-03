@@ -38,6 +38,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/scenarios", require("./routes/scenarios"));
+app.use("/api/sessions",    require("./routes/sessions"));
+app.use("/api/leaderboard", require("./routes/leaderboard"));
 
 app.use((err, req, res, next) => {
   const { statusCode = 500, message = "Something went wrong" } = err;
