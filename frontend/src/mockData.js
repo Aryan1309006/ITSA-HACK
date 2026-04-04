@@ -8,7 +8,7 @@ export const scenarios = [
       'Navigate a high-pressure vishing call simulation. Identify the scammer\'s tactics and protect sensitive information.',
     icon: '📞',
     color: 'cyan',
-    path: '/simulation/voice',
+    path: '/fakecall',
   },
   {
     id: 'sms-smishing',
@@ -19,7 +19,7 @@ export const scenarios = [
       'Analyze a series of text messages with suspicious links. Spot the smishing attempt before it\'s too late.',
     icon: '💬',
     color: 'purple',
-    path: '/simulation/voice',
+    path: '/fakesms',
   },
   {
     id: 'email-phishing',
@@ -30,7 +30,7 @@ export const scenarios = [
       'Examine a targeted email campaign. Recognize the signs of a phishing attempt and report it correctly.',
     icon: '📧',
     color: 'cyan',
-    path: '/simulation/voice',
+    path: '/fakeemail',
   },
   {
     id: 'investment-scam',
@@ -41,7 +41,7 @@ export const scenarios = [
       'Uncover a sophisticated investment scheme promising unrealistic returns. Avoid falling victim to financial fraud.',
     icon: '📈',
     color: 'purple',
-    path: '/simulation/voice',
+    path: '/fakeemail',
   },
   {
     id: 'fake-job',
@@ -52,7 +52,7 @@ export const scenarios = [
       'Identify a fraudulent job opportunity. Spot the red flags in the offer and interview process.',
     icon: '💼',
     color: 'cyan',
-    path: '/simulation/voice',
+    path: '/fakeemail',
   },
   {
     id: 'tech-support',
@@ -63,7 +63,7 @@ export const scenarios = [
       'Respond to a simulated tech support scam. Recognize the imposter and prevent unauthorized access.',
     icon: '🖥️',
     color: 'purple',
-    path: '/simulation/voice',
+    path: '/fakecall',
   },
 ];
 

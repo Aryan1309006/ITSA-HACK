@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useGameSession } from "../hooks/useGameSession";
+import ScenarioResult from "./ScenarioResult";
 
 const FakeSMSUI = () => {
   const [selected, setSelected] = useState(null);
+  const { score, feedback, sessionComplete, submitAnswer, saveSession, resetSession } = useGameSession();
 
   const options = [
     { id: "A", text: "Click the link to check my account", safe: false },
@@ -9,6 +12,36 @@ const FakeSMSUI = () => {
     { id: "C", text: "Call my bank using official number", safe: true },
     { id: "D", text: "Ignore the message", safe: true },
   ];
+
+  const handleOptionClick = (opt) => {
+    setSelected(opt);
+    submitAnswer(opt.safe);
+  };
+
+  const handleContinue = async () => {
+    await saveSession({
+      scenarioId: "sms-smishing",
+      scenarioTitle: "Bank Alert Scam",
+      redFlagsSpotted: 3,
+      totalRedFlags: 3,
+      choicesMade: [selected?.text],
+      vulnerabilityType: "SMS Smishing",
+    });
+  };
+
+  if (sessionComplete) {
+    return (
+      <ScenarioResult
+        isCorrect={feedback?.isCorrect}
+        points={feedback?.points}
+        onContinue={handleContinue}
+        onHome={() => {
+          resetSession();
+          window.location.href = "/home";
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0B0F2A] via-[#1a1f4d] to-[#000000] text-white flex flex-col items-center justify-center relative overflow-hidden">
@@ -22,7 +55,7 @@ const FakeSMSUI = () => {
       bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg">
         <span className="text-gray-300 cursor-pointer hover:text-white">← EXIT</span>
         <span className="text-white font-semibold">Bank Alert Scam</span>
-        <span className="text-cyan-400 font-semibold">SCORE 0</span>
+        <span className="text-cyan-400 font-semibold">Score: {Math.max(0, score)}</span>
       </div>
 
       {/* 📱 CENTER PHONE UI */}
@@ -60,14 +93,15 @@ const FakeSMSUI = () => {
           {options.map((opt) => (
             <button
               key={opt.id}
-              onClick={() => setSelected(opt)}
+              onClick={() => handleOptionClick(opt)}
+              disabled={selected !== null}
               className={`w-full text-left p-3 mb-2 rounded-xl border transition-all duration-300
               ${
                 selected?.id === opt.id
                   ? opt.safe
                     ? "border-green-400 bg-green-400/10 shadow-[0_0_15px_rgba(34,197,94,0.5)]"
                     : "border-red-400 bg-red-400/10 shadow-[0_0_15px_rgba(239,68,68,0.5)]"
-                  : "border-white/10 hover:border-cyan-400 hover:shadow-[0_0_10px_#00F5FF]"
+                  : "border-white/10 hover:border-cyan-400 hover:shadow-[0_0_10px_#00F5FF] disabled:opacity-50 disabled:cursor-not-allowed"
               }`}
             >
               <span className="text-cyan-400 mr-2">{opt.id}.</span>
